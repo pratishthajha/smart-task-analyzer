@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Task Analyzer - Intelligent Task Prioritization</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Enhanced Header -->
+        <header>
+            <div class="header-content">
+                <div class="logo-section">
+                    <i class="fas fa-bullseye-arrow"></i>
+                    <h1>Smart Task Analyzer</h1>
+                </div>
+                <p class="subtitle">Your AI-powered productivity assistant for intelligent task prioritization</p>
+                <div class="header-stats">
+                    <div class="stat-card">
+                        <i class="fas fa-tasks"></i>
+                        <div>
+                            <span id="total-tasks-header">0</span>
+                            <p>Total Tasks</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-chart-line"></i>
+                        <div>
+                            <span id="analyzed-count">0</span>
+                            <p>Analyzed</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <span id="total-hours">0h</span>
+                            <p>Total Hours</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="main-content">
+            <!-- Enhanced Input Section -->
+            <section class="input-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-plus-circle"></i> Input Tasks</h2>
+                    <button class="btn-icon" onclick="clearAllTasks()" title="Clear all tasks">
+                        <i class="fas fa-trash-alt"></i> Clear All
+                    </button>
+                </div>
+                
+                <!-- Strategy Selector with Info -->
+                <div class="strategy-selector">
+                    <label for="strategy">
+                        <i class="fas fa-brain"></i> Prioritization Strategy:
+                        <span class="tooltip" data-tooltip="Different strategies weight factors differently">
+                            <i class="fas fa-info-circle"></i>
+                        </span>
+                    </label>
+                    <select id="strategy">
+                        <option value="smart_balance">⚖️ Smart Balance - Balanced approach</option>
+                        <option value="fastest_wins">⚡ Fastest Wins - Quick tasks first</option>
+                        <option value="high_impact">🎯 High Impact - Important tasks first</option>
+                        <option value="deadline_driven">⏰ Deadline Driven - Urgent tasks first</option>
+                    </select>
+                    <div class="strategy-description" id="strategy-desc">
+                        Balanced approach considering urgency, importance, effort, and dependencies equally
+                    </div>
+                </div>
+
+                <!-- Input Method Tabs -->
+                <div class="input-methods">
+                    <button class="tab-btn active" onclick="showTab('form')">
+                        <i class="fas fa-edit"></i> Manual Entry
+                    </button>
+                    <button class="tab-btn" onclick="showTab('json')">
+                        <i class="fas fa-code"></i> Bulk JSON
+                    </button>
+                    <button class="tab-btn" onclick="showTab('quick')">
+                        <i class="fas fa-bolt"></i> Quick Add
+                    </button>
+                </div>
+
+                <!-- Form Input -->
+                <div id="form-input" class="input-tab active">
+                    <form id="task-form">
+                        <div class="form-group">
+                            <label>
+                                <i class="fas fa-hashtag"></i> Task ID:
+                                <span class="required">*</span>
+                            </label>
+                            <input type="text" id="task-id" required placeholder="e.g., TASK-001" autocomplete="off">
+                            <small class="hint">Unique identifier for this task</small>
+                        </div>
+
+                        <div class="form-group">
+                            <label>
+                                <i class="fas fa-text"></i> Title:
+                                <span class="required">*</span>
+                            </label>
+                            <input type="text" id="task-title" required placeholder="What needs to be done?" autocomplete="off">
+                            <small class="hint">Brief description of the task</small>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>
+                                    <i class="fas fa-calendar-alt"></i> Due Date:
+                                    <span class="required">*</span>
+                                </label>
+                                <input type="date" id="task-date" required>
+                                <small class="hint" id="days-until"></small>
+                            </div>
+                            <div class="form-group">
+                                <label>
+                                    <i class="fas fa-hourglass-half"></i> Estimated Hours:
+                                    <span class="required">*</span>
+                                </label>
+                                <input type="number" id="task-hours" min="0.1" step="0.5" required placeholder="e.g., 2.5">
+                                <small class="hint">Time needed to complete</small>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>
+                                <i class="fas fa-star"></i> Importance (1-10):
+                                <span class="importance-badge" id="importance-badge">Medium</span>
+                            </label>
+                            <div class="slider-container">
+                                <input type="range" id="task-importance" min="1" max="10" value="5">
+                                <div class="slider-labels">
+                                    <span>Low</span>
+                                    <span id="importance-value">5</span>
+                                    <span>High</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>
+                                <i class="fas fa-link"></i> Dependencies:
+                                <span class="optional">(optional)</span>
+                            </label>
+                            <input type="text" id="task-dependencies" placeholder="e.g., TASK-001, TASK-002">
+                            <small class="hint">Comma-separated task IDs this task depends on</small>
+                        </div>
+
+                        <button type="submit" class="btn btn-add">
+                            <i class="fas fa-plus"></i> Add Task to List
+                        </button>
+                    </form>
+
+                    <!-- Task List Preview -->
+                    <div id="task-list" class="task-list">
+                        <div class="list-header">
+                            <h3>
+                                <i class="fas fa-list"></i> Added Tasks: 
+                                <span id="task-count" class="count-badge">0</span>
+                            </h3>
+                            <button class="btn-small" onclick="showTasksInJSON()" title="View as JSON">
+                                <i class="fas fa-code"></i>
+                            </button>
+                        </div>
+                        <div id="tasks-preview" class="tasks-preview-container"></div>
+                    </div>
+                </div>
+
+                <!-- JSON Input -->
+                <div id="json-input" class="input-tab">
+                    <div class="json-header">
+                        <label>
+                            <i class="fas fa-file-code"></i> Paste JSON array of tasks:
+                        </label>
+                        <div class="json-actions">
+                            <button class="btn-small" onclick="loadSampleJSON()">
+                                <i class="fas fa-file-import"></i> Load Sample
+                            </button>
+                            <button class="btn-small" onclick="validateJSON()">
+                                <i class="fas fa-check-circle"></i> Validate
+                            </button>
+                        </div>
+                    </div>
+                    <textarea id="json-textarea" rows="15" placeholder='[
+  {
+    "task_id": "TASK-001",
+    "title": "Complete project documentation",
+    "due_date": "2025-11-30",
+    "estimated_hours": 4,
+    "importance": 8,
+    "dependencies": []
+  },
+  {
+    "task_id": "TASK-002",
+    "title": "Review code quality",
+    "due_date": "2025-12-05",
+    "estimated_hours": 2,
+    "importance": 6,
+    "dependencies": ["TASK-001"]
+  }
+]'></textarea>
+                    <div id="json-validation" class="validation-message"></div>
+                    <button onclick="loadFromJSON()" class="btn btn-primary">
+                        <i class="fas fa-upload"></i> Load Tasks from JSON
+                    </button>
+                </div>
+
+                <!-- Quick Add Tab -->
+                <div id="quick-input" class="input-tab">
+                    <div class="quick-add-info">
+                        <i class="fas fa-lightbulb"></i>
+                        <p>Quick add with smart defaults - Perfect for rapid task entry!</p>
+                    </div>
+                    <form id="quick-form">
+                        <div class="form-group">
+                            <input type="text" id="quick-title" required placeholder="Task description" autocomplete="off">
+                        </div>
+                        <div class="quick-options">
+                            <select id="quick-urgency">
+                                <option value="low">📅 Later (Low urgency)</option>
+                                <option value="medium" selected>⏰ Soon (Medium urgency)</option>
+                                <option value="high">🚨 Urgent (High urgency)</option>
+                            </select>
+                            <select id="quick-effort">
+                                <option value="quick">⚡ Quick (< 1h)</option>
+                                <option value="medium" selected>⏱️ Medium (2-4h)</option>
+                                <option value="long">🕐 Long (> 5h)</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-add">
+                            <i class="fas fa-bolt"></i> Quick Add
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Analyze Button -->
+                <button onclick="analyzeTasks()" class="btn btn-analyze" id="analyze-btn">
+                    <i class="fas fa-rocket"></i> Analyze & Prioritize Tasks
+                    <span class="btn-shimmer"></span>
+                </button>
+            </section>
+
+            <!-- Enhanced Output Section -->
+            <section class="output-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-chart-bar"></i> Analysis Results</h2>
+                    <div class="output-actions">
+                        <button class="btn-icon" onclick="exportResults()" title="Export results" id="export-btn" style="display:none;">
+                            <i class="fas fa-download"></i> Export
+                        </button>
+                        <button class="btn-icon" onclick="clearResults()" title="Clear results" id="clear-results-btn" style="display:none;">
+                            <i class="fas fa-times"></i> Clear
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Loading State -->
+                <div id="loading" class="loading" style="display: none;">
+                    <div class="spinner"></div>
+                    <p>Analyzing your tasks with AI...</p>
+                    <small>Calculating priorities, detecting dependencies, optimizing workflow...</small>
+                </div>
+
+                <!-- Error Message -->
+                <div id="error-message" class="error-message" style="display: none;">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <span id="error-text"></span>
+                </div>
+
+                <!-- Empty State -->
+                <div id="empty-state" class="empty-state">
+                    <i class="fas fa-inbox"></i>
+                    <h3>No Analysis Yet</h3>
+                    <p>Add some tasks and click "Analyze & Prioritize" to see intelligent recommendations</p>
+                    <div class="empty-features">
+                        <div class="feature-item">
+                            <i class="fas fa-brain"></i>
+                            <span>AI-powered prioritization</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-project-diagram"></i>
+                            <span>Dependency analysis</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-chart-line"></i>
+                            <span>Smart scoring</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Results -->
+                <div id="results" class="results"></div>
+            </section>
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <p>
+                <i class="fas fa-code"></i> Built with Django & Vanilla JavaScript | 
+                <i class="fas fa-user"></i> Sandhya Sudhir | 
+                <i class="fas fa-calendar"></i> 2025
+            </p>
+        </footer>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
