@@ -499,7 +499,7 @@ B.Tech Student | Full-Stack Developer | Problem Solver
 
 ### ⭐ Star this repo if you found it helpful!
 
-**Made with ❤️ and lots of ☕ by Sandhya Sudhir**
+**Made with ❤️ and lots of ☕ by Pratishtha Jha**
 
 <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Hand%20gestures/Waving%20Hand.png" alt="Wave" width="50"/>
 
@@ -571,14 +571,15 @@ git commit -m "🎉 Initial commit: Smart Task Analyzer - AI-powered task priori
 
 📝 Assignment for Singularium Technologies Pvt Ltd"
 
-# Create GitHub repository (go to github.com and create new repo)
-# Then link it:
-git remote add origin https://github.com/YOUR_USERNAME/smart-task-analyzer.git
+# Create GitHub repository 
+https://github.com/pratishthajha/smart-task-analyzer
+
 
 # Push to GitHub
 git branch -M main
 
 git push -u origin main
+
 
 
 
