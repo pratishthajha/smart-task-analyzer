@@ -116,7 +116,7 @@ text
 
 **1️⃣ Clone the Repository**
 
-git clone https://github.com/YOUR_USERNAME/smart-task-analyzer.git
+git clone https://github.com/pratishthajha/smart-task-analyzer.git
 cd smart-task-analyzer
 
 text
@@ -484,13 +484,12 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 <div align="center">
 
-**Sandhya Sudhir**
+**Pratiishtha Jha**
 
 B.Tech Student | Full-Stack Developer | Problem Solver
 
-[![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/YOUR_USERNAME)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/YOUR_PROFILE)
-[![Portfolio](https://img.shields.io/badge/Portfolio-FF5722?style=for-the-badge&logo=google-chrome&logoColor=white)](https://your-portfolio.com)
+[![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/pratishthajha)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](www.linkedin.com/in/pratishthajha31)
 
 </div>
 
@@ -535,7 +534,7 @@ Create LICENSE:
 text
 MIT License
 
-Copyright (c) 2025 Sandhya Sudhir
+Copyright (c) 2025 Pratishtha Jha
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -602,4 +601,5 @@ git remote add origin https://github.com/YOUR_USERNAME/smart-task-analyzer.git
 
 # Push to GitHub
 git branch -M main
+
 git push -u origin main
