@@ -10,7 +10,6 @@
 [![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/HTML)
 [![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/CSS)
 
-<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Objects/Bullseye.png" alt="Bullseye" width="100" />
 
 **Intelligently prioritize tasks using multiple AI strategies** 🧠  
 *Never wonder "What should I work on next?" ever again!*
@@ -580,6 +579,7 @@ git remote add origin https://github.com/YOUR_USERNAME/smart-task-analyzer.git
 git branch -M main
 
 git push -u origin main
+
 
 
 
