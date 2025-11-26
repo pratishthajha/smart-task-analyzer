@@ -15,7 +15,7 @@
 **Intelligently prioritize tasks using multiple AI strategies** 🧠  
 *Never wonder "What should I work on next?" ever again!*
 
-[🎥 View Demo](#-demo) • [⚡ Quick Start](#-quick-start) • [📖 Documentation](#-how-it-works) • [🤝 Contribute](#-contributing)
+[🎥 View Demo](#https://www.loom.com/share/7e8f52f27a354803bb3f0191cabba3ac) • [⚡ Quick Start](#-quick-start) • [📖 Documentation](#-how-it-works) • [🤝 Contribute](#-contributing)
 
 </div>
 
@@ -603,4 +603,5 @@ git remote add origin https://github.com/YOUR_USERNAME/smart-task-analyzer.git
 git branch -M main
 
 git push -u origin main
+
 
