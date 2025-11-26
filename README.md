@@ -71,11 +71,11 @@ Automatically detects circular dependencies and prioritizes blocking tasks
 <table>
 <tr>
 <td width="50%">
-<img src="screenshots/input-section.png" alt="Input Section"/>
+<img src="screenshots/input.png" alt="Input Section"/>
 <p align="center"><b>🎯 Input Tasks</b><br/>Multiple input methods</p>
 </td>
 <td width="50%">
-<img src="screenshots/analysis-results.png" alt="Analysis Results"/>
+<img src="screenshots/result.png" alt="Analysis Results"/>
 <p align="center"><b>📊 Analysis Results</b><br/>Priority scores & explanations</p>
 </td>
 </tr>
@@ -603,3 +603,4 @@ git remote add origin https://github.com/YOUR_USERNAME/smart-task-analyzer.git
 git branch -M main
 
 git push -u origin main
+
