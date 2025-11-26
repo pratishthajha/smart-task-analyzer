@@ -98,8 +98,6 @@ Automatically detects circular dependencies and prioritizes blocking tasks
 ⌨️ Keyboard Shortcuts → Ctrl+Enter to analyze, Ctrl+K to clear
 🌈 Dark Mode Support → Easy on the eyes (coming soon!)
 
-text
-
 ---
 
 ## 🚀 Quick Start
@@ -110,7 +108,6 @@ text
 ✅ pip package manager
 ✅ Modern web browser (Chrome, Firefox, Edge)
 
-text
 
 ### 🎬 Action! Let's Get Started
 
@@ -119,7 +116,6 @@ text
 git clone https://github.com/pratishthajha/smart-task-analyzer.git
 cd smart-task-analyzer
 
-text
 
 **2️⃣ Backend Setup (Django)**
 
@@ -144,7 +140,6 @@ python manage.py migrate
 Start server
 python manage.py runserver
 
-text
 
 **3️⃣ Frontend Setup**
 
@@ -156,7 +151,6 @@ Option 2: Use Live Server in VS Code
 Option 3: Python simple server
 python -m http.server 8080
 
-text
 
 **4️⃣ Open Your Browser**
 
@@ -182,7 +176,6 @@ The Smart Task Analyzer calculates a **priority score (0-10)** for each task bas
 📈 Due in 15-30 days → 3.0
 🗓️ Due after 30 days → 1.0
 
-text
 
 #### 2️⃣ Importance Score
 
@@ -196,7 +189,6 @@ Direct user input (1-10 scale) reflecting business value or impact
 🐢 5-8 hours → 4.0
 🐌 > 8 hours → 2.0
 
-text
 
 #### 4️⃣ Dependency Score
 
@@ -215,7 +207,6 @@ Tasks blocking others get **+2.5 points** per dependent (capped at 10)
 (Effort × 0.2) +
 (Dependency × 0.2)
 
-text
 
 Balanced approach
 
@@ -228,7 +219,6 @@ Balanced approach
 (Urgency × 0.3) +
 (Importance × 0.2)
 
-text
 
 Quick momentum
 
@@ -241,7 +231,6 @@ Quick momentum
 (Dependency × 0.3) +
 (Urgency × 0.2)
 
-text
 
 Maximum value
 
@@ -254,7 +243,6 @@ Maximum value
 (Importance × 0.3) +
 (Dependency × 0.1)
 
-text
 
 Time pressure
 
@@ -270,14 +258,12 @@ def has_cycle(task_id, visited, rec_stack):
 visited.add(task_id)
 rec_stack.add(task_id)
 
-text
 for dependency in task.dependencies:
     if dependency in rec_stack:
         return True  # 🚨 Cycle detected!
 
 rec_stack.remove(task_id)
 return False
-text
 
 ---
 
@@ -319,7 +305,6 @@ Run the comprehensive test suite:
 cd backend
 python manage.py test
 
-text
 
 **Test Coverage:**
 - ✅ Past-due task prioritization
@@ -334,7 +319,6 @@ Ran 4 tests in 0.025s
 
 OK ✅
 
-text
 
 ---
 
@@ -366,7 +350,6 @@ smart-task-analyzer/
 ├── 🚫 .gitignore
 └── 📜 LICENSE
 
-text
 
 ---
 
@@ -391,7 +374,6 @@ Content-Type: application/json
 "strategy": "smart_balance"
 }
 
-text
 
 **Response:**
 {
@@ -400,13 +382,11 @@ text
 "total_tasks": 1
 }
 
-text
 
 ### ⭐ Suggest Top Tasks
 
 POST /api/tasks/suggest/
 
-text
 
 Returns top 3 recommended tasks
 
@@ -414,7 +394,6 @@ Returns top 3 recommended tasks
 
 GET /api/tasks/health/
 
-text
 
 ---
 
@@ -484,7 +463,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 <div align="center">
 
-**Pratiishtha Jha**
+**Pratishtha Jha**
 
 B.Tech Student | Full-Stack Developer | Problem Solver
 
@@ -531,7 +510,6 @@ B.Tech Student | Full-Stack Developer | Problem Solver
 Step 4: Create LICENSE File
 Create LICENSE:
 
-text
 MIT License
 
 Copyright (c) 2025 Pratishtha Jha
@@ -556,7 +534,6 @@ SOFTWARE.
 Step 5: Create requirements.txt
 In backend/requirements.txt:
 
-text
 Django==5.2.8
 djangorestframework==3.14.0
 django-cors-headers==4.3.1
@@ -565,9 +542,9 @@ Take screenshots of your application and save them in screenshots/ folder:
 
 main-interface.png - Full view of your app
 
-input-section.png - Task input area
+input.png - Task input area
 
-analysis-results.png - Results display
+result.png - Results display
 
 Step 7: Initialize Git & Push to GitHub
 bash
@@ -603,5 +580,6 @@ git remote add origin https://github.com/YOUR_USERNAME/smart-task-analyzer.git
 git branch -M main
 
 git push -u origin main
+
 
 
